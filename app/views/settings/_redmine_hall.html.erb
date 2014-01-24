@@ -1,0 +1,5 @@
+<p>
+  <%= content_tag(:label, l(:hall_settings_label_auth_token)) %>
+  <%= text_field_tag 'settings[auth_token]', @settings[:auth_token] %>
+  A token from <a href="https://hall.com/docs/integrations/generic/" target="_blank">your API tokens page</a>.
+</p>
