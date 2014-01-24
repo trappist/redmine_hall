@@ -2,3 +2,4 @@ en:
   hall_settings_header: Hall Plugin Configuration
   hall_settings_label_projects: Projects
   field_hall_auth_token: Hall Room token
+  hall_settings_label_auth_token: Hall room token

@@ -77,15 +77,14 @@ class NotificationHook < Redmine::Hook::Listener
 
   def send_message(data)
     Rails.logger.info "Sending message to Hall: #{data[:text]}"
-    req = Net::HTTP::Post.new("/api/1/services/generic")
+    req = Net::HTTP::Post.new("/api/1/services/generic/#{data[:token]}")
     req.set_form_data({
-      :auth_token => data[:token],
-      :from => 'Redmine',
+      :title => 'Redmine',
       :message => data[:text]
     })
     req["Content-Type"] = 'application/x-www-form-urlencoded'
 
-    http = Net::HTTP.new("https://hall.com", 443)
+    http = Net::HTTP.new("hall.com", 443)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     begin
@@ -97,7 +96,7 @@ class NotificationHook < Redmine::Hook::Listener
     end
   end
 
-  def truncate(text, length = 20, end_string = '…')
+  def truncate(text, length = 20, end_string = '...')
     return unless text
     words = text.split()
     words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')

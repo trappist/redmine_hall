@@ -10,12 +10,11 @@ Redmine::Plugin.register :redmine_hall do
     require_dependency 'hall_hooks'
     require_dependency 'hall_view_hooks'
     require_dependency 'hall_project_patch'
-    Project.send(:include, RedmineHall::Patches::ProjectPatch)
+    Project.send(:include, RedmineHall::Patches::HallProjectPatch)
   end
 
   settings :partial => 'settings/redmine_hall',
     :default => {
-      :room_id => "",
       :auth_token => "",
     }
 end
