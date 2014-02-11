@@ -47,7 +47,7 @@ class NotificationHook < Redmine::Hook::Listener
     wiki         = CGI::escapeHTML(page.pretty_title)
     project_name = CGI::escapeHTML(project.name)
     url          = get_url(page)
-    text         = "#{author} edited #{project_name} wiki page <a href=\"#{url}\">#{wiki}</a>"
+    text         = "#{author} edited #{project_name} wiki page <a href=\"#{url}\" target=\"_blank\">#{wiki}</a>"
 
     data          = {}
     data[:text]   = text
